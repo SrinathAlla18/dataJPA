@@ -1,4 +1,5 @@
 package com.srinath.dataJPA.model;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,22 +9,17 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
-@Table(name = "student")
-public class Student {
+public class Teacher {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long studentId;
+    private Long teacherId;
     private String firstName;
     private String lastName;
-    private String emailId;
 
-    @ManyToMany(mappedBy = "students")
+    @OneToMany(mappedBy ="teacher",cascade = CascadeType.ALL)
     private List<Course> courses;
-
-
 
 }
